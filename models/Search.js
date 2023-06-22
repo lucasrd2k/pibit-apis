@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('./db.js');
 
-const User = db.define('usuario', {
+const Search = db.define('pesquisa', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -12,31 +12,47 @@ const User = db.define('usuario', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    matricula: {
+    amostra: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    descricao: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    email: {
+    tcle: {
+        type: Sequelize.TEXT,
+        allowNull: false
+    },
+    tale: {
+        type: Sequelize.TEXT,
+        allowNull: false
+    },
+    nomes: {
+        type: Sequelize.TEXT,
+        allowNull: false
+    },
+    telefones: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    senha: {
+    emails: {
+        type: Sequelize.TEXT,
+        allowNull: false
+    },
+    endereco: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    foto:{
+    usuario: {
         type: Sequelize.STRING,
-        allowNull: false
-    },
-    notify:{
-        type: Sequelize.BOOLEAN,
         allowNull: false
     }
 });
 
 //Criar a tabela
-// User.sync();
+// Search.sync();
 //Verificar se há alguma diferença na tabela, realiza a alteração
-User.sync({ alter: true })
+Search.sync({ alter: true })
 
-module.exports = User;
+module.exports = Search;
