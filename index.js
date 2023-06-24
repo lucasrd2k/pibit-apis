@@ -911,6 +911,32 @@ app.put("/senha", authMiddleware, async (req, res) => {
     }
 });
 
+const Response = require('./models/Response');
+
+
+//rota para salvar respostas   resposta pergunta usuario
+app.post("/resposta", authMiddleware, async (req, res) => {
+    const { responses } = req.body;
+    for (let i = 0; i < responses.length; i++) {
+        const response = responses[i];
+        try {
+            await Response.create({
+                pergunta: response.pergunta,
+                usuario: response.usuario,
+                resposta: response.resposta
+            });
+        } catch (error) {
+            res.status(200).json({
+                error: true,
+                message: "Erro ao salvar resposta!" + error
+            });
+        }
+    }
+    res.status(200).json({
+        error: false,
+        message: "Respostas salvas com sucesso!"
+    });
+});
 
 
 
