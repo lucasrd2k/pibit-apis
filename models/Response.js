@@ -30,3 +30,10 @@ const Response = db.define('resposta', {
     }
 });
 
+//Criar a tabela
+Response.sync();
+//Verificar se há alguma diferença na tabela, realiza a alteração
+//Response.sync({ alter: true })
+//Exportar
+module.exports = Response;
+
